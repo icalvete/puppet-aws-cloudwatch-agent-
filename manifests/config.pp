@@ -5,7 +5,7 @@ class aws_cloudwatch_agent::config {
     group    => 'root',
     mode     => '0644',
   }
-  
+
   concat::fragment{ "aws_cloudwatch_agent_main0":
     target  => "${aws_cloudwatch_agent::params::aws_cloudwatch_agent_root_path}/${aws_cloudwatch_agent::params::aws_cloudwatch_agent_config_file}",
     order   => 00,
