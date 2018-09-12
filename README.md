@@ -15,14 +15,10 @@ class {'aws_cloudwatch_agent':
 }
 
 aws_cloudwatch_agent::register{'/var/log/apache2/access.log':
-  content => "[/var/log/apache2/access.log]
-  datetime_format = %d/%b/%Y:%H:%M:%S
-  file = /var/log/apache2/access.log
-  buffer_duration = 5000
-  log_stream_name = apache-access.log
-  initial_position = start_of_file
-  log_group_name = ${aws_cloudwatch_agent_bucket}
-"
+   datetime_format => '%d/%b/%Y:%H:%M:%S',
+   file            => /var/log/apache2/access.log
+   duration        => 5000
+   bucket          => $aws_cloudwatch_agent_bucket
 }
 
 ```
@@ -31,7 +27,7 @@ By default the aws_cloudwatch_agent class create a file with...
 
 ```
 [/var/log/syslog]
-datetime_format = %d/%b/%Y:%H:%M:%S
+datetime_format = %b %d %H:%M:%S 
 file = /var/log/syslog
 buffer_duration = 5000
 log_stream_name = {instance_id}

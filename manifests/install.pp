@@ -36,7 +36,7 @@ class aws_cloudwatch_agent::install {
   exec { 'aws_cloudwatch_agent_install':
     command => "/usr/bin/python ${aws_cloudwatch_agent::params::aws_cloudwatch_agent_target_path}/awslogs-agent-setup.py -n --region eu-west-1 --dependency-path ${aws_cloudwatch_agent::params::aws_cloudwatch_agent_target_path}/AgentDependencies -c ${aws_cloudwatch_agent::params::aws_cloudwatch_agent_target_path}/awslogs.conf",
     user    => 'root',
-    unless  => "/usr/bin/test -d ${aws_cloudwatch_agent::params::aws_cloudwatch_agent_root_path}",
-    require => File['aws_cloudwatch_agent_config']
+    unless  => "/usr/bin/test -d ${aws_cloudwatch_agent::params::aws_cloudwatch_agent_root_path}/state",
+    require => [File['aws_cloudwatch_agent_config'], Exec['extract_download_AgentDependencies']]
   }
 }
