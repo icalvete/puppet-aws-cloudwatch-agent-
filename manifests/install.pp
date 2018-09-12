@@ -8,14 +8,14 @@ class aws_cloudwatch_agent::install {
     timeout     => 0,
     verbose     => true,
   }
- 
+
   wget::fetch { "download_AgentDependencies":
     source      => "https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/${aws_cloudwatch_agent::params::agent_dependencies}",
     destination => $aws_cloudwatch_agent::params::aws_cloudwatch_agent_target_path,
     timeout     => 0,
     verbose     => true,
     require => Wget::Fetch['download_awslogs-agent-setup'],
-  } 
+  }
 
   exec { 'extract_download_AgentDependencies':
     command => "/bin/tar xfz ${aws_cloudwatch_agent::params::aws_cloudwatch_agent_target_path}/${aws_cloudwatch_agent::params::agent_dependencies}",
@@ -23,7 +23,7 @@ class aws_cloudwatch_agent::install {
     unless  => "/usr/bin/test -d ${aws_cloudwatch_agent::params::aws_cloudwatch_agent_target_path}/AgentDependencies",
     require => Wget::Fetch['download_AgentDependencies']
   }
-   
+
   file { 'aws_cloudwatch_agent_config':
     ensure  => file,
     owner   => 'root',

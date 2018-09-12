@@ -5,7 +5,7 @@ class aws_cloudwatch_agent::config {
     group    => 'root',
     mode     => '0644',
   }
-  
+
   aws_cloudwatch_agent::register{'aws_cloudwatch_agent_main':
     order   => 01,
     content => template("${module_name}/awslogs.conf.erb"),
