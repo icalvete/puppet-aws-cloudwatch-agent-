@@ -9,6 +9,7 @@ Puppet manifest to install and configure aws cloudwatch agent
 ```puppet
 
 $aws_cloudwatch_agent_bucket = 'whateverbucketyouwant'
+
 class {'aws_cloudwatch_agent':
   bucket => $aws_cloudwatch_agent_bucket
 }
