@@ -2,7 +2,7 @@
 
 Puppet manifest to install and configure aws cloudwatch agent
 
-[![Build Status](https://secure.travis-ci.org/icalvete/puppet-aws_cloudwatch_agent.png)](http://travis-ci.org/icalvete/puppet-aws_cloudwatch_agent
+[![Build Status](https://secure.travis-ci.org/icalvete/puppet-aws_cloudwatch_agent.png)](http://travis-ci.org/icalvete/puppet-aws_cloudwatch_agent)
 
 ## Examples:
 
